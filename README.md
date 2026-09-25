@@ -8,6 +8,25 @@ Diagnostic Breast Cancer dataset (569 patients, 30 FNA features), with SHAP and 
 Monte Carlo Dropout and conformal uncertainty, DiCE counterfactuals, and a measurement of
 SMOTE-before-partitioning leakage on five clinical cohorts.
 
+## Quick start — reproduce the paper in three clicks
+
+1. Click an **Open in Colab** button below (a Google account is needed; nothing else to install).
+2. In Colab keep the default **CPU** runtime: **Runtime → Change runtime type → CPU → Save**.
+3. **Runtime → Run all**. If Colab warns *"This notebook was not authored by Google"*, click **Run anyway**.
+   The first cell downloads this repository (code, locked model, data) and installs the exact library versions; no Google Drive access is needed.
+4. Scroll to the last cell (**RESULTS SUMMARY**). Every quantity is compared with the value in the paper and marked ✅ (match) or ❌ (different).
+
+| Notebook | Reproduces | Time (CPU) |
+|---|---|---|
+| [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Iqra672-ai/TrustBreast/blob/main/notebooks/03_objective3_uncertainty.ipynb) `03_objective3_uncertainty.ipynb` | MC Dropout, conformal prediction — Tables 9, 11, 13; Figs 9–12 | ~5–10 min (fastest check) |
+| [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Iqra672-ai/TrustBreast/blob/main/notebooks/02_objective2_shap_lime.ipynb) `02_objective2_shap_lime.ipynb` | SHAP and LIME — Table 7; Figs 6–8 | ~30–45 min |
+| [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Iqra672-ai/TrustBreast/blob/main/notebooks/04_objective4_dice.ipynb) `04_objective4_dice.ipynb` | DiCE counterfactuals — Tables 14, 15; Figs 13–14 | ~10–20 min |
+| [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Iqra672-ai/TrustBreast/blob/main/notebooks/01_objective1_ensemble.ipynb) `01_objective1_ensemble.ipynb` | Held-out results, CV, leakage, repeated splits, baselines, calibration — Tables 2, 3, 5, 6, 8, 10, 12; Figs 3–5 | ~3–4 h |
+| [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Iqra672-ai/TrustBreast/blob/main/notebooks/05_leakage_five_cohorts.ipynb) `05_leakage_five_cohorts.ipynb` | Leakage on five cohorts — Table 4 | ~30–50 min |
+| [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Iqra672-ai/TrustBreast/blob/main/notebooks/06_coimbra_portability.ipynb) `06_coimbra_portability.ipynb` | Coimbra portability — Section 4.10 | ~5–15 min |
+
+Notebook 04 uses `O3_all_patients.csv` from notebook 03; a copy is already in `results/`, so the notebooks can be run in any order.
+
 ## Reproducibility
 
 Every notebook ends with a **RESULTS SUMMARY** cell that compares its output with the numbers
