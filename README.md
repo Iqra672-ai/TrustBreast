@@ -24,6 +24,7 @@ SMOTE-before-partitioning leakage on five clinical cohorts.
 | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Iqra672-ai/TrustBreast/blob/main/notebooks/01_objective1_ensemble.ipynb) `01_objective1_ensemble.ipynb` | Held-out results, CV, leakage, repeated splits, baselines, calibration — Tables 2, 3, 5, 6, 8, 10, 12; Figs 3–5 | ~3–4 h |
 | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Iqra672-ai/TrustBreast/blob/main/notebooks/05_leakage_five_cohorts.ipynb) `05_leakage_five_cohorts.ipynb` | Leakage on five cohorts — Table 4 | ~30–50 min |
 | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Iqra672-ai/TrustBreast/blob/main/notebooks/06_coimbra_portability.ipynb) `06_coimbra_portability.ipynb` | Coimbra portability — Section 4.10 | ~5–15 min |
+| [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Iqra672-ai/TrustBreast/blob/main/notebooks/07_crossconformal_out_of_fold.ipynb) `07_crossconformal_out_of_fold.ipynb` | Held-out-fold cross-conformal coverage (Table 12, Fig. 10, §4.10) and errors inside the escalation set | ~20–30 min |
 
 Notebook 04 uses `O3_all_patients.csv` from notebook 03; a copy is already in `results/`, so the notebooks can be run in any order.
 
@@ -74,7 +75,7 @@ Notebook 04 reads `O3_all_patients.csv`, written by notebook 03 (a copy is in `r
 | L2 logistic regression, same protocol | 97.48 ± 2.20% (no significant difference) |
 | SHAP–LIME agreement, top-10 | Spearman ρ = 0.95, 8/10 overlap |
 | MC-Dropout escalation set (std > 0.15) | 12/114 patients, contains every error |
-| Cross-conformal coverage (α = 0.05) | 95.25% marginal, 95.75% malignant |
+| Cross-conformal coverage (α = 0.05, held-out folds) | 95.08% marginal, 94.81% malignant |
 | SMOTE-before-partitioning inflation, 5 cohorts | +0.24 to +3.67 points, significant on none |
 
 ## Data
