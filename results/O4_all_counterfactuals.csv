@@ -1,0 +1,37 @@
+patient_idx,true_label,ens_prob_original,cf_number,cf_prob,l1,plausible,changes,flips_at_thr
+79,1,0.8593,0,0.3449,0.5613,True,"{'texture_mean': (19.98, 11.97), 'concave_points_mean': (0.0584, 0.0)}",True
+79,1,0.8593,1,0.3374,0.5902,True,"{'concave_points_mean': (0.0584, 0.0), 'perimeter_worst': (129.0, 68.8)}",True
+79,1,0.8593,2,0.2795,0.6612,False,"{'radius_worst': (19.96, 8.28), 'area_worst': (1236.0, 236.4)}",True
+18,0,0.3197,0,0.6624,0.144,False,"{'area_worst': (639.3, 1225.1)}",True
+18,0,0.3197,1,0.7153,0.4915,False,"{'perimeter_mean': (87.02, 109.05), 'area_worst': (639.3, 2019.9)}",True
+18,0,0.3197,2,0.5332,0.3563,True,"{'area_se': (15.09, 171.73), 'perimeter_worst': (99.48, 112.27)}",True
+111,0,0.3423,0,0.6175,0.4936,False,"{'perimeter_mean': (94.25, 45.97), 'compactness_se': (0.0205, 0.0038)}",True
+111,0,0.3423,1,0.5512,0.9221,False,"{'perimeter_mean': (94.25, 139.96), 'perimeter_se': (1.994, 14.861)}",True
+111,0,0.3423,2,0.574,1.1541,False,"{'radius_se': (0.2535, 2.0685), 'concavity_worst': (0.3779, 1.0)}",True
+29,1,0.9039,0,0.3099,2.2601,False,"{'texture_mean': (23.33, 11.17), 'concavity_mean': (0.2136, 0.0), 'concave_points_mean': (0.1002, 0.0), 'radius_worst': (21.57, 9.32), 'perimeter_worst': (143.6, 60.35)}",True
+29,1,0.9039,1,0.2887,1.6906,False,"{'area_mean': (980.5, 481.0), 'concave_points_mean': (0.1002, 0.0), 'texture_se': (1.465, 1.008), 'texture_worst': (28.87, 17.39), 'perimeter_worst': (143.6, 79.15), 'concavity_worst': (0.5165, 0.2)}",True
+29,1,0.9039,2,0.26,1.7227,False,"{'smoothness_mean': (0.0929, 0.0637), 'symmetry_se': (0.0167, 0.0087), 'texture_worst': (28.87, 12.45), 'perimeter_worst': (143.6, 52.7), 'area_worst': (1437.0, 231.5), 'symmetry_worst': (0.2301, 0.1623)}",True
+3,1,0.8445,0,0.343,0.4223,True,"{'texture_worst': (30.86, 19.04), 'perimeter_worst': (109.5, 87.97)}",True
+3,1,0.8445,1,0.3037,0.7613,True,"{'texture_worst': (30.86, 12.68), 'perimeter_worst': (109.5, 53.92)}",True
+3,1,0.8445,2,0.1931,0.9017,True,"{'texture_worst': (30.86, 13.43), 'smoothness_worst': (0.1431, 0.0769)}",True
+112,1,0.4389,0,0.2628,0.2806,False,"{'symmetry_mean': (0.1594, 0.1245), 'area_worst': (989.5, 564.9)}",True
+112,1,0.4389,1,0.314,0.5709,False,"{'perimeter_mean': (98.78, 181.39)}",True
+112,1,0.4389,2,0.3271,0.2978,True,"{'smoothness_mean': (0.0888, 0.1188)}",True
+62,1,0.919,0,0.2683,0.9232,False,"{'concave_points_mean': (0.0803, 0.0), 'smoothness_worst': (0.1651, 0.0857)}",True
+62,1,0.919,1,0.287,0.7896,True,"{'smoothness_worst': (0.1651, 0.1084), 'concave_points_worst': (0.2208, 0.1)}",True
+62,1,0.919,2,0.1961,0.814,True,"{'concave_points_mean': (0.0803, 0.0), 'concave_points_worst': (0.2208, 0.1)}",True
+61,0,0.1077,0,0.4059,1.1586,False,"{'radius_worst': (14.77, 30.52), 'fractal_dimension_worst': (0.0863, 0.1775)}",True
+61,0,0.1077,1,0.4203,1.1968,False,"{'concave_points_mean': (0.0348, 0.2), 'compactness_worst': (0.2256, 0.613)}",True
+61,0,0.1077,2,0.5608,0.5999,True,"{'texture_worst': (20.5, 43.01)}",True
+16,1,0.3348,0,0.4003,0.8707,True,"{'compactness_mean': (0.128, 0.2307), 'concave_points_worst': (0.1383, 0.3)}",True
+16,1,0.3348,1,0.3706,0.8354,True,"{'perimeter_se': (1.957, 9.911), 'concavity_se': (0.0176, 0.2)}",True
+16,1,0.3348,2,0.5759,0.6298,True,"{'symmetry_worst': (0.2589, 0.5784)}",True
+87,1,0.5926,0,0.3469,0.3673,False,"{'texture_worst': (37.18, 23.4)}",True
+87,1,0.5926,1,0.2576,0.6241,False,"{'area_se': (31.72, 97.57), 'texture_worst': (37.18, 18.38)}",True
+87,1,0.5926,2,0.2263,1.0398,False,"{'concavity_mean': (0.1981, 0.0), 'texture_worst': (37.18, 15.58)}",True
+56,0,0.0909,0,0.5945,0.2857,False,"{'area_worst': (521.3, 1683.6)}",True
+56,0,0.0909,1,0.554,0.3478,True,"{'perimeter_worst': (85.07, 154.91)}",True
+56,0,0.0909,2,0.5964,0.5672,True,"{'perimeter_worst': (85.07, 198.95)}",True
+42,1,0.518,0,0.3006,0.527,True,"{'compactness_worst': (0.1581, 0.7013)}",True
+42,1,0.518,1,0.2365,0.8633,False,"{'compactness_worst': (0.1581, 1.0479)}",True
+42,1,0.518,2,0.1889,0.4331,True,"{'texture_worst': (31.71, 15.46)}",True

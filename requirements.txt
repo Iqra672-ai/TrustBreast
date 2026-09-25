@@ -1,0 +1,15 @@
+# TrustBreast — exact versions used for the reported results (Google Colab, Python 3.13, T4 GPU)
+tensorflow==2.20.0
+keras==3.13.2
+scikit-learn==1.6.1
+xgboost==3.4.1
+imbalanced-learn==0.14.2
+shap==0.52.0
+lime==0.2.0.1
+dice-ml==0.12
+numpy==2.1.3
+pandas==2.2.3
+scipy==1.16.3
+statsmodels
+matplotlib
+tqdm
