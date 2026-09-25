@@ -16,7 +16,7 @@ exactly under the setup below (verified in independent Colab sessions).
 
 | | |
 |---|---|
-| Environment | Google Colab, Python 3.13, NVIDIA T4 GPU |
+| Environment | Google Colab, Python 3.13, **CPU runtime** (the default; no GPU) |
 | Libraries | exact versions in `requirements.txt` (TensorFlow 2.20.0, Keras 3.13.2, scikit-learn 1.6.1, XGBoost 3.4.1, SHAP 0.52.0, LIME 0.2.0.1, dice-ml 0.12) |
 | Model | the locked, trained model in `models/TrustBreast_locked/` is **loaded, not re-trained**, by notebooks 01–04 |
 | Seeds | fixed everywhere: data splits, SMOTE, all learners, per-fold network seeds (`keras.utils.set_random_seed`), TensorFlow op determinism, LIME generator reset, stateless MC-Dropout masks, per-patient DiCE seeds |
@@ -29,10 +29,11 @@ depend on re-training.
 
 ## How to run
 
-Open each notebook in Google Colab (**Runtime → Change runtime type → T4 GPU**, then **Run all**).
+Open each notebook in Google Colab and keep the default **CPU** runtime (**Runtime → Change runtime type → CPU**), then **Run all**.
+The reported results were produced on the CPU runtime; a GPU runtime uses different floating-point kernels and can change re-trained results in the last decimal.
 The first cell clones this repository and installs the pinned requirements.
 
-| Notebook | Paper items | Runtime (T4) |
+| Notebook | Paper items | Approx. time (CPU) |
 |---|---|---|
 | `notebooks/01_objective1_ensemble.ipynb` | Tables 2, 3, 5, 6, 8, 10, 12; Figs 3–5 | ~3–4 h |
 | `notebooks/02_objective2_shap_lime.ipynb` | Table 7; Figs 6–8 | ~30–45 min |

@@ -1,4 +1,4 @@
-# TrustBreast — exact versions used for the reported results (Google Colab, Python 3.13, T4 GPU)
+# TrustBreast — exact versions used for the reported results (Google Colab, Python 3.13, CPU runtime)
 tensorflow==2.20.0
 keras==3.13.2
 scikit-learn==1.6.1
