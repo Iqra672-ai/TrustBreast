@@ -1,7 +1,7 @@
 # TrustBreast
 
 Code for **"TrustBreast: A Clinically Complete, Explainable, and Uncertainty-Aware Ensemble Framework
-for Breast Cancer Diagnosis on the Wisconsin Diagnostic Dataset"** (Iqra Mushtaq, M. Umair Shahzad).
+for Breast Cancer Diagnosis on the Wisconsin Diagnostic Dataset"**.
 
 A leakage-free soft-voting ensemble (random forest + XGBoost + deep network) on the Wisconsin
 Diagnostic Breast Cancer dataset (569 patients, 30 FNA features), with SHAP and LIME attributions,
