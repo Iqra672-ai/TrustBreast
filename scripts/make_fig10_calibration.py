@@ -1,0 +1,25 @@
+import os
+import matplotlib; matplotlib.use('Agg')
+ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+os.makedirs(os.path.join(ROOT,'figures'),exist_ok=True)
+import matplotlib.pyplot as plt, pandas as pd, numpy as np
+d=pd.read_csv(os.path.join(ROOT,'results','O3_reliability_diagram.csv')).dropna()
+fig,(a,b)=plt.subplots(1,2,figsize=(14,5.2),dpi=160)
+a.plot([0.45,1],[0.45,1],'k--',lw=1.4,label='Perfect calibration')
+a.plot(d.mean_conf,d.mean_acc,'o-',color='#c0392b',lw=2.2,ms=8,label='MC Dropout (DNN)')
+for c,y,n in zip(d.mean_conf,d.mean_acc,d.n_patients): a.annotate(f'n={int(n)}',(c,y),xytext=(6,-14),textcoords='offset points',fontsize=10)
+a.set_xlim(0.45,1.02); a.set_ylim(0.4,1.05); a.grid(alpha=.3)
+a.set_xlabel('Mean predicted confidence',fontsize=11); a.set_ylabel('Empirical accuracy',fontsize=11)
+a.set_title('Reliability diagram (10 equal-width bins)\nECE = 0.0474, MCE = 0.4273 (descriptive)',fontsize=13,fontweight='bold')
+a.legend(loc='lower right',fontsize=11)
+cats=['Marginal','Benign\n(Mondrian)','Malignant\n(Mondrian)']; split=[93.86,97.22,100.00]; cross=[95.08,94.96,94.81]
+x=np.arange(3); w=.36
+b1=b.bar(x-w/2,split,w,color='#95a5a6',label='Split-conformal (91 calibration patients)')
+b2=b.bar(x+w/2,cross,w,color='#2e86c1',label='Cross-conformal (569 out-of-fold, held-out folds)')
+for r,v,t in zip(b1,split,['93.86%','97.22%','100.00%‡']): b.text(r.get_x()+r.get_width()/2,max(v,95.0)+.35 if abs(v-95)<1 else v+.25,t,ha='center',fontsize=11,fontweight='bold')
+for r,v in zip(b2,cross): b.text(r.get_x()+r.get_width()/2,max(v,95.0)+.35,f'{v:.2f}%',ha='center',fontsize=11,fontweight='bold')
+b.axhline(95,ls='--',color='k',lw=1.4,label='95% target')
+b.set_ylim(88,103); b.set_xticks(x); b.set_xticklabels(cats,fontsize=11); b.set_ylabel('Empirical coverage (%)',fontsize=11)
+b.set_title('Conformal coverage (α = 0.05)',fontsize=13,fontweight='bold'); b.grid(axis='y',alpha=.3)
+b.legend(loc='lower left',fontsize=10)
+plt.tight_layout(); out=os.path.join(ROOT,'figures','fig10_calib.png'); plt.savefig(out,dpi=160); print('Saved',out)
