@@ -11,7 +11,7 @@ def _root():
 ROOT=_root()
 os.makedirs(os.path.join(ROOT,'figures'),exist_ok=True)
 import matplotlib.pyplot as plt, pandas as pd, numpy as np
-d=pd.read_csv(os.path.join(ROOT,'results','O3_reliability_diagram.csv')).dropna()
+d=pd.read_csv(os.path.join(ROOT,'results','O3_reliability_diagram.csv') if os.path.exists(os.path.join(ROOT,'results','O3_reliability_diagram.csv')) else 'https://raw.githubusercontent.com/Iqra672-ai/TrustBreast/main/results/O3_reliability_diagram.csv').dropna()
 fig,(a,b)=plt.subplots(1,2,figsize=(14,5.2),dpi=160)
 a.plot([0.45,1],[0.45,1],'k--',lw=1.4,label='Perfect calibration')
 a.plot(d.mean_conf,d.mean_acc,'o-',color='#c0392b',lw=2.2,ms=8,label='MC Dropout (DNN)')

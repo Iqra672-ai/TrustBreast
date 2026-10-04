@@ -14,7 +14,7 @@ def _root():
     return os.getcwd()
 ROOT=_root()
 os.makedirs(os.path.join(ROOT,'figures'),exist_ok=True)
-d=pd.read_csv(os.path.join(ROOT,'results','O3_all_patients.csv'))
+d=pd.read_csv(os.path.join(ROOT,'results','O3_all_patients.csv') if os.path.exists(os.path.join(ROOT,'results','O3_all_patients.csv')) else 'https://raw.githubusercontent.com/Iqra672-ai/TrustBreast/main/results/O3_all_patients.csv')
 mean=d.mc_mean.values; std=d.mc_std.values; lo=d.ci_lower.values; hi=d.ci_upper.values
 mal=(d.true_label.values=='M')
 RED,BLUE='#e74c3c','#3498db'
