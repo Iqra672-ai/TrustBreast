@@ -1,6 +1,14 @@
 import os
-import matplotlib; matplotlib.use('Agg')
-ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+import matplotlib
+if 'ipykernel' not in __import__('sys').modules: matplotlib.use('Agg')
+def _root():
+    c=[]
+    if '__file__' in globals(): c.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    c+= [os.getcwd(), os.path.join(os.getcwd(),'TrustBreast'), '/content/TrustBreast', os.path.dirname(os.getcwd())]
+    for p in c:
+        if os.path.isdir(os.path.join(p,'results')): return p
+    return os.getcwd()
+ROOT=_root()
 os.makedirs(os.path.join(ROOT,'figures'),exist_ok=True)
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, FancyArrowPatch

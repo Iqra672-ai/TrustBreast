@@ -68,11 +68,12 @@ Notebook 04 reads `O3_all_patients.csv`, written by notebook 03 (a copy is in `r
 
 ## Figure scripts
 
-Figures 1 and 10 are drawn by small stand-alone scripts (no model or notebook state needed):
+Figures 1, 9 and 10 are drawn by small stand-alone scripts (no model or notebook state needed):
 
 | Script | Figure | Input |
 |---|---|---|
 | `scripts/make_fig1_framework.py` | Fig. 1, framework overview | none (values as reported in the paper) |
+| `scripts/make_fig9_mc.py` | Fig. 9, MC-Dropout uncertainty | `results/O3_all_patients.csv` (written by notebook 03) |
 | `scripts/make_fig10_calibration.py` | Fig. 10, reliability diagram and conformal coverage | `results/O3_reliability_diagram.csv` (written by notebook 03); coverage values from notebooks 03 and 07 |
 
 Run from the repository root, e.g. `python scripts/make_fig10_calibration.py`; output is written to `figures/`.
