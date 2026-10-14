@@ -3,10 +3,29 @@
 Code for **"TrustBreast: A Clinically Complete, Explainable, and Uncertainty-Aware Ensemble Framework
 for Breast Cancer Diagnosis on the Wisconsin Diagnostic Dataset"**.
 
+## Description
+
 A leakage-free soft-voting ensemble (random forest + XGBoost + deep network) on the Wisconsin
 Diagnostic Breast Cancer dataset (569 patients, 30 FNA features), with SHAP and LIME attributions,
 Monte Carlo Dropout and conformal uncertainty, DiCE counterfactuals, and a measurement of
 SMOTE-before-partitioning leakage on five clinical cohorts.
+
+## Code Information
+
+| Folder / file | Contents |
+|---|---|
+| `notebooks/` | Eight Jupyter notebooks (00–07) that reproduce every table and figure in the paper |
+| `scripts/` | Stand-alone Python scripts that draw Figures 1, 9 and 10 |
+| `models/TrustBreast_locked/` | The trained (locked) ensemble used for the held-out analyses |
+| `results/` | Saved outputs: per-patient MC-Dropout results, reliability-diagram data, all DiCE counterfactuals |
+| `data/` | Copy of the Breast Cancer Coimbra dataset |
+| `requirements.txt` | Exact library versions |
+
+## Requirements
+
+- Python 3.13 (Google Colab CPU runtime; no GPU needed)
+- Exact library versions are in `requirements.txt`; install with `pip install -r requirements.txt`
+- Main packages: TensorFlow 2.20.0, Keras 3.13.2, scikit-learn 1.6.1, XGBoost 3.4.1, imbalanced-learn 0.14.2, SHAP 0.52.0, LIME 0.2.0.1, dice-ml 0.12, NumPy 2.1.3, pandas 2.2.3, SciPy 1.16.3
 
 ## Quick start — reproduce the paper in three clicks
 
@@ -47,7 +66,7 @@ different hardware or library versions they may differ in the last decimal. Resu
 the locked model (held-out metrics, SHAP, LIME, MC Dropout, conformal prediction, DiCE) do not
 depend on re-training.
 
-## How to run
+## Usage Instructions
 
 Open each notebook in Google Colab and keep the default **CPU** runtime (**Runtime → Change runtime type → CPU**), then **Run all**.
 The reported results were produced on the CPU runtime; a GPU runtime uses different floating-point kernels and can change re-trained results in the last decimal.
@@ -79,6 +98,15 @@ Figures 1, 9 and 10 are drawn by small stand-alone scripts (no model or notebook
 Run from the repository root, e.g. `python scripts/make_fig10_calibration.py`; output is written to `figures/`.
 All other figures are produced by the notebooks listed above.
 
+## Methodology
+
+1. **Preprocessing:** stratified 80/20 split (seed 42); Min–Max scaling fitted on the training data only; a 91-patient validation subset carved out before oversampling; SMOTE and Gaussian-noise augmentation applied to the training data only.
+2. **Objective 1 – Ensemble:** random forest, XGBoost and a deep neural network combined by soft voting; decision thresholds tuned on the validation subset; leakage-free 10-fold cross-validation and 30 repeated splits.
+3. **Objective 2 – Explainability:** SHAP (normalized ensemble average) and LIME, compared with Spearman rank correlation.
+4. **Objective 3 – Uncertainty:** Monte Carlo Dropout (100 passes, reproducible masks), split-conformal and cross-conformal prediction.
+5. **Objective 4 – Counterfactuals:** DiCE counterfactuals for the high-uncertainty patients, with plausibility checks.
+6. **Additional analyses:** SMOTE-leakage measurement on five cohorts and a portability check on the Coimbra cohort.
+
 ## Key results
 
 | Quantity | Value |
@@ -92,12 +120,23 @@ All other figures are produced by the notebooks listed above.
 | Cross-conformal coverage (α = 0.05, held-out folds) | 95.08% marginal, 94.81% malignant |
 | SMOTE-before-partitioning inflation, 5 cohorts | +0.24 to +3.67 points, significant on none |
 
-## Data
+## Dataset Information
 
-Wisconsin Diagnostic Breast Cancer (UCI Machine Learning Repository), downloaded by the notebooks.
-The four additional cohorts of notebook 05 are fetched from OpenML (`diabetes`, `haberman`,
-`blood-transfusion-service-center`, `sick`; version 1).
+- **Wisconsin Diagnostic Breast Cancer (WBCD/WDBC):** 569 patients (357 benign, 212 malignant), 30 continuous features computed from digitized fine-needle aspiration (FNA) images, plus an ID and the diagnosis label. Source: UCI Machine Learning Repository, https://doi.org/10.24432/C5DW2B. Downloaded automatically by the notebooks.
+- **Breast Cancer Coimbra:** 116 participants (64 patients, 52 healthy controls), 9 clinical features. Source: UCI Machine Learning Repository, https://doi.org/10.24432/C52P59. A copy is in `data/coimbra_dataR2.csv`.
+- **Four leakage-experiment cohorts (notebook 05):** fetched from OpenML (`diabetes`, `haberman`, `blood-transfusion-service-center`, `sick`; version 1).
 
-## Citation
+## Citations
 
-(add after publication)
+If you use this code, please cite the paper (full details will be added after publication):
+
+Mushtaq I, Shahzad MU, Othman KM, Rehman HU, Yildirim Y, Gaid ASA. TrustBreast: A Clinically Complete, Explainable, and Uncertainty-Aware Ensemble Framework for Breast Cancer Diagnosis on the Wisconsin Diagnostic Dataset. Under review.
+
+Datasets:
+- Wolberg W, Mangasarian O, Street N, Street W. Breast Cancer Wisconsin (Diagnostic) [dataset]. UCI Machine Learning Repository; 1993. https://doi.org/10.24432/C5DW2B
+- Patrício M, Pereira J, Crisóstomo J, Matafome P, Seiça R, Caramelo F. Breast Cancer Coimbra [dataset]. UCI Machine Learning Repository; 2018. https://doi.org/10.24432/C52P59
+- Vanschoren J, van Rijn JN, Bischl B, Torgo L. OpenML: networked science in machine learning. SIGKDD Explorations. 2014;15(2):49–60.
+
+## License
+
+This project is released under the MIT License (see `LICENSE`).
